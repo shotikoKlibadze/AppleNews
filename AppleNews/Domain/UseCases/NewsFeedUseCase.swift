@@ -11,3 +11,19 @@ protocol NewsFeedUseCaseInterface {
     func fetchNews(completion: @escaping ([NewsArticle]) -> Void )
 }
 
+final class NewsFeedUseCase: NewsFeedUseCaseInterface {
+    
+    let newsRepository: NewsRepositoryInterface
+    
+    init(newsRepository: NewsRepositoryInterface) {
+        self.newsRepository = newsRepository
+    }
+    
+    
+    func fetchNews(completion: @escaping ([NewsArticle]) -> Void) {
+        
+    }
+    
+    
+}
+

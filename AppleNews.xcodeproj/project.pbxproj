@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09331DD628C72767000A52F7 /* NewsRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09331DD528C72767000A52F7 /* NewsRepositoryInterface.swift */; };
+		09331DD828C728D7000A52F7 /* NewsDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09331DD728C728D7000A52F7 /* NewsDataRepository.swift */; };
 		09DF90C028C62D3E00F93FEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF90BF28C62D3E00F93FEA /* AppDelegate.swift */; };
 		09DF90C228C62D3E00F93FEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF90C128C62D3E00F93FEA /* SceneDelegate.swift */; };
 		09DF90C928C62D3F00F93FEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09DF90C828C62D3F00F93FEA /* Assets.xcassets */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09331DD528C72767000A52F7 /* NewsRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsRepositoryInterface.swift; sourceTree = "<group>"; };
+		09331DD728C728D7000A52F7 /* NewsDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDataRepository.swift; sourceTree = "<group>"; };
 		09DF90BC28C62D3E00F93FEA /* AppleNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09DF90BF28C62D3E00F93FEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09DF90C128C62D3E00F93FEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,8 +110,8 @@
 		09DF90D928C6326200F93FEA /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				09DF90FD28C633EC00F93FEA /* Utils */,
 				09DF90EF28C6336100F93FEA /* NewsScene */,
+				09DF90FD28C633EC00F93FEA /* Utils */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -124,9 +128,9 @@
 		09DF90DB28C6328600F93FEA /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				09DF90EC28C6334A00F93FEA /* Interfaces */,
-				09DF90EB28C6334300F93FEA /* UseCases */,
 				09DF90EA28C6333C00F93FEA /* Entities */,
+				09DF90EB28C6334300F93FEA /* UseCases */,
+				09DF90EC28C6334A00F93FEA /* Interfaces */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -161,6 +165,7 @@
 		09DF90E728C6332400F93FEA /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				09331DD728C728D7000A52F7 /* NewsDataRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -184,6 +189,7 @@
 		09DF90EC28C6334A00F93FEA /* Interfaces */ = {
 			isa = PBXGroup;
 			children = (
+				09331DD528C72767000A52F7 /* NewsRepositoryInterface.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -191,8 +197,9 @@
 		09DF90EF28C6336100F93FEA /* NewsScene */ = {
 			isa = PBXGroup;
 			children = (
-				09DF90F528C633AA00F93FEA /* NewsFeedViewController.swift */,
+				09DF910028C636BA00F93FEA /* NewsFeedCell */,
 				09DF90F028C6337500F93FEA /* ViewModel */,
+				09DF90F528C633AA00F93FEA /* NewsFeedViewController.swift */,
 			);
 			path = NewsScene;
 			sourceTree = "<group>";
@@ -212,6 +219,13 @@
 				09DF90FE28C633F600F93FEA /* Observable.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		09DF910028C636BA00F93FEA /* NewsFeedCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NewsFeedCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,7 +310,9 @@
 				09DF90FF28C633F600F93FEA /* Observable.swift in Sources */,
 				09DF90E328C632FB00F93FEA /* Endpoint.swift in Sources */,
 				09DF90FB28C633BA00F93FEA /* NewsFeedItemViewModel.swift in Sources */,
+				09331DD628C72767000A52F7 /* NewsRepositoryInterface.swift in Sources */,
 				09DF90C228C62D3E00F93FEA /* SceneDelegate.swift in Sources */,
+				09331DD828C728D7000A52F7 /* NewsDataRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

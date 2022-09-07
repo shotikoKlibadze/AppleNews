@@ -40,4 +40,3 @@ class NewsFeedViewController: UIViewController {
         }
     }
 }
-
