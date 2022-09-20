@@ -19,7 +19,6 @@ final class NewsDataRepository: NewsRepositoryInterface {
         
         dataTransferService.request(with: APIEndpoints.getNewsEndpoint()) { result in
             switch result {
-                
             case .success(let data):
                 completion(data.articles.map{$0.toDomain()})
             case .failure(_):

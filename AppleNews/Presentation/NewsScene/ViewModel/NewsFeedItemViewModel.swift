@@ -8,15 +8,15 @@
 import Foundation
 
 struct NewsFeedItemViewModel {
-    let title: String
-    let limitedOverview: String
-    let source: String
-    let posterImage: String
+    let title: String?
+    let limitedOverview: String?
+    let source: String?
+    let posterImage: String?
     
     init(article: NewsArticle) {
         self.title = article.title
         self.posterImage = article.imageURL
-        self.source = article.source.name
+        self.source = article.source?.name
         self.limitedOverview = article.description
     }
 }

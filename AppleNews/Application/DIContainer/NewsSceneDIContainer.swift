@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
-final class NewsSceneDIContainer {
+final class NewsSceneDIContainer: NewsFeedFlowCoordinatorDependencies {
     
     private let dataTransferService: DataTransferServiceInterface
     
@@ -15,7 +16,25 @@ final class NewsSceneDIContainer {
         self.dataTransferService = dataTransferService
     }
     
-    // MARK: - Use Cases
+    //MARK: Flows
+    
+    func makeNewsSceeneFlowCoordinator(navigationController: UINavigationController) -> NewsFeedFlowCoordinator {
+        return NewsFeedFlowCoordinator(navigationController: navigationController, depenndencies: self)
+    }
+    
+    //MARK: - ViewControllers
+    
+    func makeNewsFeedViewController() -> NewsFeedViewController {
+        return NewsFeedViewController(with: makeNewsFeedViewModel())
+    }
+    
+    //MARK: - ViewModels
+    
+    func makeNewsFeedViewModel() -> NewsFeedViewModel {
+        return NewsFeedViewModel(newsFeedUseCaseInterface: makeNewsFeedUseCase())
+    }
+    
+    // MARK: - UseCases
     
     func makeNewsFeedUseCase() -> NewsFeedUseCase {
         return NewsFeedUseCase(newsRepository: makeNewsDataRepository())

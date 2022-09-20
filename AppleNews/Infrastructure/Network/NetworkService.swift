@@ -130,7 +130,7 @@ public final class DefaultNetworkErrorLogger: NetworkErrorLogger {
     public func log(responseData data: Data?, response: URLResponse?) {
         guard let data = data else { return }
         if let dataDict = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-            printIfDebug("responseData: \(String(describing: dataDict))")
+           // printIfDebug("responseData: \(String(describing: dataDict))")
         }
     }
 
@@ -154,15 +154,15 @@ extension NetworkError {
 }
 
 extension Dictionary where Key == String {
-    func prettyPrint() -> String {
-        var string: String = ""
-        if let data = try? JSONSerialization.data(withJSONObject: self, options: .prettyPrinted) {
-            if let nstr = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
-                string = nstr as String
-            }
-        }
-        return string
-    }
+//    func prettyPrint() -> String {
+//        var string: String = ""
+//        if let data = try? JSONSerialization.data(withJSONObject: self, options: .prettyPrinted) {
+//            if let nstr = NSString(data: data, encoding: String.Encoding.utf8.rawValue) {
+//                string = nstr as String
+//            }
+//        }
+//        return string
+//    }
 }
 
 func printIfDebug(_ string: String) {

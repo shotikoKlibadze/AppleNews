@@ -12,7 +12,11 @@ class NewsFeedViewController: UIViewController {
     private lazy var tableView = UITableView(frame: view.bounds)
     private var viewModel: NewsFeedViewModelProtocol?
     
-    private var newsItems = [NewsFeedItemViewModel]()
+    private var newsItems = [NewsFeedItemViewModel]() {
+        didSet {
+            print(newsItems.count)
+        }
+    }
     
     init(with viewModel: NewsFeedViewModelProtocol?) {
         self.viewModel = viewModel
@@ -28,6 +32,7 @@ class NewsFeedViewController: UIViewController {
         setupUI()
         bind()
         view.backgroundColor = .white
+        viewModel?.viewDidLoad()
     }
     
     private func setupUI() {

@@ -21,7 +21,7 @@ final class NewsFeedUseCase: NewsFeedUseCaseInterface {
     
     
     func fetchNews(completion: @escaping ([NewsArticle]) -> Void) {
-        
+        newsRepository.fetchNews(completion: completion)
     }
     
     
