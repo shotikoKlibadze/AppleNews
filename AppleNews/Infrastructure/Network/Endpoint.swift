@@ -91,39 +91,39 @@ extension Requastable {
     
     private func url(with config: NetworkConfigurable) throws -> URL {
         
-        let baseURL = config.baseURL.absoluteString.last != "/" ? config.baseURL.absoluteString + "/" : config.baseURL.absoluteString
-        let endPoint = isFullPath ? path : baseURL.appending(path)
+//        let baseURL = config.baseURL.absoluteString.last != "/" ? config.baseURL.absoluteString + "/" : config.baseURL.absoluteString
+//        let endPoint = isFullPath ? path : baseURL.appending(path)
+//
+//        guard var urlComponents = URLComponents(string: endPoint) else { throw RequestGenerationError.components }
+//        var urlQueryItems = [URLQueryItem]()
+//        let queryParameters = try queryParametersEncodable?.toDictionary() ?? self.queryParameters
+//        queryParameters.forEach {
+//            urlQueryItems.append(URLQueryItem(name: $0.key, value: "\($0.value)"))
+//        }
+//        config.queryParameters.forEach {
+//            urlQueryItems.append(URLQueryItem(name: $0.key, value: $0.value))
+//        }
+//        urlComponents.queryItems = !urlQueryItems.isEmpty ? urlQueryItems : nil
+//
+//        guard let url = urlComponents.url else { throw RequestGenerationError.components }
         
-        guard var urlComponents = URLComponents(string: endPoint) else { throw RequestGenerationError.components }
-        var urlQueryItems = [URLQueryItem]()
-        let queryParameters = try queryParametersEncodable?.toDictionary() ?? self.queryParameters
-        queryParameters.forEach {
-            urlQueryItems.append(URLQueryItem(name: $0.key, value: "\($0.value)"))
-        }
-        config.queryParameters.forEach {
-            urlQueryItems.append(URLQueryItem(name: $0.key, value: $0.value))
-        }
-        urlComponents.queryItems = !urlQueryItems.isEmpty ? urlQueryItems : nil
-        
-        guard let url = urlComponents.url else { throw RequestGenerationError.components }
-        
-        return url
+        return URL(string: path)!
     }
     
     func urlRequest(with networkConfig: NetworkConfigurable) throws -> URLRequest {
         
         let url = try self.url(with: networkConfig)
         var urlRequest = URLRequest(url: url)
-        var allHeaders: [String: String] = networkConfig.headers
-        headerParameters.forEach({ allHeaders.updateValue($1 , forKey: $0)})
-        
-        let bodyParameters = try bodyParametersEncodable?.toDictionary() ?? self.bodyParameters
-        if !bodyParameters.isEmpty {
-            urlRequest.httpBody = encodeBody(bodyParameters: bodyParameters, bodyEncoding: bodyEncoding)
-        }
-        
-        urlRequest.httpMethod = method?.rawValue
-        urlRequest.allHTTPHeaderFields = allHeaders
+//        var allHeaders: [String: String] = networkConfig.headers
+//        headerParameters.forEach({ allHeaders.updateValue($1 , forKey: $0)})
+//        
+//        let bodyParameters = try bodyParametersEncodable?.toDictionary() ?? self.bodyParameters
+//        if !bodyParameters.isEmpty {
+//            urlRequest.httpBody = encodeBody(bodyParameters: bodyParameters, bodyEncoding: bodyEncoding)
+//        }
+//        
+//        urlRequest.httpMethod = method?.rawValue
+//        urlRequest.allHTTPHeaderFields = allHeaders
         return urlRequest
     }
     

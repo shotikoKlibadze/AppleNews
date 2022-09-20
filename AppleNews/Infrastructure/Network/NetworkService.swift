@@ -49,7 +49,9 @@ final class NetworkService: NetworkServiceInterface {
     private let sessionManager: NetworkSessionManagerInterface
     private let logger: NetworkErrorLogger
     
-    init(config: NetworkConfigurable, sessionManager: NetworkSessionManagerInterface, logger: NetworkErrorLogger) {
+    init(config: NetworkConfigurable,
+         sessionManager: NetworkSessionManagerInterface = NetworkSessionManager(),
+         logger: NetworkErrorLogger = DefaultNetworkErrorLogger()) {
         self.config = config
         self.sessionManager = sessionManager
         self.logger = logger

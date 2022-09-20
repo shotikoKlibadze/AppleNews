@@ -16,7 +16,7 @@ enum DataTransferError: Error {
 }
 
 
-protocol DataTransferServiceProtocol {
+protocol DataTransferServiceInterface {
     typealias CompletionHandler<T> = (Result<T,DataTransferError>) -> Void
     
     @discardableResult
@@ -38,13 +38,13 @@ protocol DataTransferErrorLogger {
     func log(error: Error)
 }
 
-final class DataTransferService: DataTransferServiceProtocol {
+final class DataTransferService: DataTransferServiceInterface {
     
     private let networkService: NetworkServiceInterface
     private let errorResolver: DataTransferErrorResolver
     private let errorLogger: DataTransferErrorLogger
     
-    public init(with networkService: NetworkServiceInterface,
+    public init(networkService: NetworkServiceInterface,
                 errorResolver: DataTransferErrorResolver = DefaultDataTransferErrorResolver(),
                 errorLogger: DataTransferErrorLogger = DefaultDataTransferErrorLogger()) {
         self.networkService = networkService

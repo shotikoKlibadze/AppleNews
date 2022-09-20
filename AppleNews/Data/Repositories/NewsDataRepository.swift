@@ -9,11 +9,23 @@ import Foundation
 
 final class NewsDataRepository: NewsRepositoryInterface {
     
+    let dataTransferService: DataTransferServiceInterface
     
-    init() {}
+    init(dataTransferService: DataTransferServiceInterface) {
+        self.dataTransferService = dataTransferService
+    }
     
     func fetchNews(completion: @escaping ([NewsArticle]) -> Void) {
         
+        dataTransferService.request(with: APIEndpoints.getNewsEndpoint()) { result in
+            switch result {
+                
+            case .success(let data):
+                completion(data.articles.map{$0.toDomain()})
+            case .failure(_):
+                print("oh oh oh")
+            }
+        }
     }
     
 }

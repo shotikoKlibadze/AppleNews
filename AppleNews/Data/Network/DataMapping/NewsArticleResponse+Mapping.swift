@@ -17,8 +17,6 @@ struct Source: Codable {
     let id, name: String
 }
 
-
-
 struct ArticleData: Codable {
     let source: Source
     let author: String
@@ -31,6 +29,7 @@ struct ArticleData: Codable {
 }
 
 extension ArticleData {
+    
     func toDomain() -> NewsArticle {
         return .init(source: ArticleSource(id: source.id, name: source.name),
                      author: author,
