@@ -14,7 +14,7 @@ class NewsFeedViewController: UIViewController {
     
     private var newsItems = [NewsFeedItemViewModel]() {
         didSet {
-            print(newsItems.count)
+            tableView.reloadData()
         }
     }
     
@@ -31,17 +31,39 @@ class NewsFeedViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
         bind()
-        view.backgroundColor = .white
+        setupTableView()
         viewModel?.viewDidLoad()
     }
     
     private func setupUI() {
         title = "AppleNews"
+        view.backgroundColor = .white
+        view.addSubview(tableView)
+    }
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
     }
     
     private func bind() {
         viewModel?.items.observe(on: self) { [weak self] items in
             self?.newsItems = items
+            self?.tableView.reloadData()
         }
     }
+}
+
+extension NewsFeedViewController : UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return newsItems.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath) as? NewsTableViewCell else { return UITableViewCell() }
+        cell.configure(model: newsItems[indexPath.row])
+        return cell
+    }
+    
 }

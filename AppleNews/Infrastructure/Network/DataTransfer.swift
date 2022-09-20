@@ -41,6 +41,8 @@ protocol DataTransferErrorLogger {
 final class DataTransferService: DataTransferServiceInterface {
     
     private let networkService: NetworkServiceInterface
+    
+    
     private let errorResolver: DataTransferErrorResolver
     private let errorLogger: DataTransferErrorLogger
     
