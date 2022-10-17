@@ -10,7 +10,7 @@ import UIKit
 final class NewsTableViewCell: UITableViewCell {
     
     static let identifier = "NewsTableViewCell"
-    static let hegith: GLfixed = 350
+    static let hegith: CGFloat = 350
     
     let posterImageView : UIImageView = {
         let imageView = UIImageView()

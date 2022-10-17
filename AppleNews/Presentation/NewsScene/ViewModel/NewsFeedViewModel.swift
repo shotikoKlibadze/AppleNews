@@ -42,6 +42,5 @@ final class NewsFeedViewModel : NewsFeedViewModelProtocol {
     func didSelectItem(at index: Int) {
         
     }
-    
-    
+
 }
