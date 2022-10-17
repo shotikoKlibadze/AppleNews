@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol NewsRepositoryInterface {
+protocol NewsDataRepositoryInterface {
     func fetchNews(completion: @escaping ([NewsArticle]) -> Void)
 }

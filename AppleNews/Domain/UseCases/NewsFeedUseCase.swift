@@ -13,14 +13,14 @@ protocol NewsFeedUseCaseInterface {
 
 final class NewsFeedUseCase: NewsFeedUseCaseInterface {
     
-    let newsRepository: NewsRepositoryInterface
+    let newsDataRepository: NewsDataRepositoryInterface
     
-    init(newsRepository: NewsRepositoryInterface) {
-        self.newsRepository = newsRepository
+    init(newsRepository: NewsDataRepositoryInterface) {
+        self.newsDataRepository = newsRepository
     }
     
     func fetchNews(completion: @escaping ([NewsArticle]) -> Void) {
-        newsRepository.fetchNews(completion: completion)
+        newsDataRepository.fetchNews(completion: completion)
     }
     
 }

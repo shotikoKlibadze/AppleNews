@@ -87,7 +87,7 @@ enum RequestGenerationError: Error {
 
 extension Requastable {
     
-    //For this app this functions are overkill but will be needed for more complicated app.
+    // MARK: - For this app this functions are overkill but will be needed for more complicated app -
     
     private func url(with config: NetworkConfigurable) throws -> URL {
         
@@ -116,12 +116,12 @@ extension Requastable {
         var urlRequest = URLRequest(url: url)
 //        var allHeaders: [String: String] = networkConfig.headers
 //        headerParameters.forEach({ allHeaders.updateValue($1 , forKey: $0)})
-//        
+//
 //        let bodyParameters = try bodyParametersEncodable?.toDictionary() ?? self.bodyParameters
 //        if !bodyParameters.isEmpty {
 //            urlRequest.httpBody = encodeBody(bodyParameters: bodyParameters, bodyEncoding: bodyEncoding)
 //        }
-//        
+//
 //        urlRequest.httpMethod = method?.rawValue
 //        urlRequest.allHTTPHeaderFields = allHeaders
         return urlRequest

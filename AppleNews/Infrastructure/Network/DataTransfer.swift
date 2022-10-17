@@ -22,8 +22,6 @@ protocol DataTransferServiceInterface {
     @discardableResult
     func request<T: Decodable, E: ResponseRequastable>(with endpoint: E,
                                                        completion: @escaping CompletionHandler<T>) -> NetworkCancallable? where E.Response == T
-    func request<E: ResponseRequastable>(with endpoint: E,
-                                         completion: @escaping CompletionHandler<Void>) -> NetworkCancallable? where E.Response == Void
 }
 
 protocol DataTransferErrorResolver {
@@ -41,8 +39,6 @@ protocol DataTransferErrorLogger {
 final class DataTransferService: DataTransferServiceInterface {
     
     private let networkService: NetworkServiceInterface
-    
-    
     private let errorResolver: DataTransferErrorResolver
     private let errorLogger: DataTransferErrorLogger
     
@@ -61,21 +57,6 @@ final class DataTransferService: DataTransferServiceInterface {
             case .success(let data):
                 let result: Result<T, DataTransferError> = self.decode(data: data, decoder: endpoint.responseDecoder)
                 DispatchQueue.main.async { return completion(result) }
-            case .failure(let error):
-                self.errorLogger.log(error: error)
-                let error = self.resolve(networkError: error)
-                DispatchQueue.main.async { return completion(.failure(error)) }
-            }
-        }
-        
-    }
-    
-    func request<E>(with endpoint: E, completion: @escaping CompletionHandler<Void>) -> NetworkCancallable? where E : ResponseRequastable, E.Response == Void {
-        
-        return self.networkService.request(endPoint: endpoint) { result in
-            switch result {
-            case .success:
-                DispatchQueue.main.async { return completion(.success(())) }
             case .failure(let error):
                 self.errorLogger.log(error: error)
                 let error = self.resolve(networkError: error)

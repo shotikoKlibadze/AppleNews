@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class NewsDataRepository: NewsRepositoryInterface {
+final class NewsDataRepository: NewsDataRepositoryInterface {
     
     let dataTransferService: DataTransferServiceInterface
     
@@ -22,9 +22,8 @@ final class NewsDataRepository: NewsRepositoryInterface {
             case .success(let data):
                 completion(data.articles.map{$0.toDomain()})
             case .failure(_):
-                print("oh oh oh")
+                print("failure to fetch news")
             }
         }
     }
-    
 }
