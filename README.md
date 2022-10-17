@@ -1,2 +1,2 @@
 # AppleNews
-MVVM + Clean Architecture Example 
+Clean Architecture Example with MVVM + Coordinator
