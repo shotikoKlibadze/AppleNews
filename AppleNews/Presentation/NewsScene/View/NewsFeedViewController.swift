@@ -18,7 +18,10 @@ class NewsFeedViewController: UIViewController {
         }
     }
     
-    init(with viewModel: NewsFeedViewModelProtocol?) {
+    var imageDataTransferRepository: PosterImageRepositoryInterface
+    
+    init(viewModel: NewsFeedViewModelProtocol?, imageDataTransferRepository: PosterImageRepositoryInterface) {
+        self.imageDataTransferRepository = imageDataTransferRepository
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -44,6 +47,7 @@ class NewsFeedViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: NewsTableViewCell.identifier)
+        tableView.separatorStyle = .singleLine
     }
     
     private func bind() {
@@ -62,8 +66,12 @@ extension NewsFeedViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath) as? NewsTableViewCell else { return UITableViewCell() }
-        cell.configure(model: newsItems[indexPath.row])
+        cell.configure(model: newsItems[indexPath.row], imageDataReop: imageDataTransferRepository)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 400
     }
     
 }

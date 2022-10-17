@@ -14,7 +14,6 @@ final class NewsTableViewCell: UITableViewCell {
     
     let posterImageView : UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .green
         imageView.image = UIImage(systemName: "homekit")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -46,6 +45,10 @@ final class NewsTableViewCell: UITableViewCell {
         return stackView
     }()
     
+    private var posterImageRepositoryInterface: PosterImageRepositoryInterface?
+    private var viewModel: NewsFeedItemViewModel!
+    private var imageLoadTask: Cancallable? { willSet { imageLoadTask?.cancel()} }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupLaout()
@@ -58,25 +61,24 @@ final class NewsTableViewCell: UITableViewCell {
             tittleLabel.heightAnchor.constraint(equalToConstant: 50)
         ])
         stackView.addArrangedSubviews([posterImageView,tittleLabel,descriptionLabel])
-        stackView.fillSuperview(padding: .init(top: 0, left: 16, bottom: 10, right: 16))
+        stackView.fillSuperview(padding: .init(top: 5, left: 16, bottom: 0, right: 16))
     }
     
-    func configure(model: NewsFeedItemViewModel) {
+    func configure(model: NewsFeedItemViewModel, imageDataReop: PosterImageRepositoryInterface) {
+        self.viewModel = model
+        self.posterImageRepositoryInterface = imageDataReop
         tittleLabel.text = model.title
         descriptionLabel.text = model.limitedOverview
-        
-        guard let imageURL = model.posterImage, let url = URL(string: imageURL) else { return }
-        
-        URLSession.shared.dataTask(with: url) { data, _, _ in
-            guard let data = data else {
-                return
-            }
-            
-            DispatchQueue.main.async {
-                self.posterImageView.image = UIImage(data: data)
-            }
-        }.resume()
-        
+        updateImageView()
+    }
+    
+    private func updateImageView() {
+        guard let imageURLString = viewModel.posterImage else { return }
+        imageLoadTask = posterImageRepositoryInterface?.fetchPoster(imageURLString: imageURLString, completion: { [weak self] imageData in
+            self?.posterImageView.image = UIImage(data: imageData)
+
+            self?.imageLoadTask = nil
+        })
     }
     
     override func prepareForReuse() {

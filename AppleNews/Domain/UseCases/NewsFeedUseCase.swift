@@ -19,11 +19,9 @@ final class NewsFeedUseCase: NewsFeedUseCaseInterface {
         self.newsRepository = newsRepository
     }
     
-    
     func fetchNews(completion: @escaping ([NewsArticle]) -> Void) {
         newsRepository.fetchNews(completion: completion)
     }
-    
     
 }
 

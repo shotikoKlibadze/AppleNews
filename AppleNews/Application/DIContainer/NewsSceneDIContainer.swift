@@ -10,10 +10,15 @@ import UIKit
 
 final class NewsSceneDIContainer: NewsFeedFlowCoordinatorDependencies {
     
-    private let dataTransferService: DataTransferServiceInterface
+    struct Dependencies {
+        let apiDataTransferService: DataTransferService
+        let imageDataTransferService: DataTransferService
+    }
     
-    init(dataTransferService: DataTransferServiceInterface) {
-        self.dataTransferService = dataTransferService
+    private let dependencies: Dependencies
+    
+    init(dependencies: Dependencies) {
+        self.dependencies = dependencies
     }
     
     //MARK: Flows
@@ -25,7 +30,7 @@ final class NewsSceneDIContainer: NewsFeedFlowCoordinatorDependencies {
     //MARK: - ViewControllers
     
     func makeNewsFeedViewController() -> NewsFeedViewController {
-        return NewsFeedViewController(with: makeNewsFeedViewModel())
+        return NewsFeedViewController(viewModel: makeNewsFeedViewModel(), imageDataTransferRepository: makePosterImageRepository())
     }
     
     //MARK: - ViewModels
@@ -43,7 +48,11 @@ final class NewsSceneDIContainer: NewsFeedFlowCoordinatorDependencies {
     // MARK: - Repositories
     
     func makeNewsDataRepository() -> NewsDataRepository {
-       return NewsDataRepository(dataTransferService: dataTransferService)
+        return NewsDataRepository(dataTransferService: dependencies.apiDataTransferService)
+    }
+    
+    func makePosterImageRepository() -> PosterImageRepository {
+        return PosterImageRepository(dataTransferService: dependencies.imageDataTransferService)
     }
  
 }

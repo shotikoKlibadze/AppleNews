@@ -17,6 +17,10 @@
 		09331E3928DA0EBC000A52F7 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09331E3828DA0EBC000A52F7 /* NewsTableViewCell.swift */; };
 		09331E3C28DA11A0000A52F7 /* Extension+UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09331E3B28DA11A0000A52F7 /* Extension+UIStackView.swift */; };
 		09331E3E28DA133B000A52F7 /* Extension+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09331E3D28DA133B000A52F7 /* Extension+UIView.swift */; };
+		09369AFD28DDE9150043C091 /* PosterImageRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09369AFC28DDE9150043C091 /* PosterImageRepository.swift */; };
+		09369AFF28DDEA7E0043C091 /* PosterImageRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09369AFE28DDEA7E0043C091 /* PosterImageRepositoryInterface.swift */; };
+		0949AD6528FD44CE006A086F /* RepositoryTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0949AD6428FD44CE006A086F /* RepositoryTask.swift */; };
+		0949AD6828FD452B006A086F /* Cancallable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0949AD6728FD452B006A086F /* Cancallable.swift */; };
 		09DF90C028C62D3E00F93FEA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF90BF28C62D3E00F93FEA /* AppDelegate.swift */; };
 		09DF90C228C62D3E00F93FEA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DF90C128C62D3E00F93FEA /* SceneDelegate.swift */; };
 		09DF90C928C62D3F00F93FEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09DF90C828C62D3F00F93FEA /* Assets.xcassets */; };
@@ -45,6 +49,10 @@
 		09331E3828DA0EBC000A52F7 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		09331E3B28DA11A0000A52F7 /* Extension+UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIStackView.swift"; sourceTree = "<group>"; };
 		09331E3D28DA133B000A52F7 /* Extension+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+UIView.swift"; sourceTree = "<group>"; };
+		09369AFC28DDE9150043C091 /* PosterImageRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterImageRepository.swift; sourceTree = "<group>"; };
+		09369AFE28DDEA7E0043C091 /* PosterImageRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterImageRepositoryInterface.swift; sourceTree = "<group>"; };
+		0949AD6428FD44CE006A086F /* RepositoryTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTask.swift; sourceTree = "<group>"; };
+		0949AD6728FD452B006A086F /* Cancallable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cancallable.swift; sourceTree = "<group>"; };
 		09DF90BC28C62D3E00F93FEA /* AppleNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppleNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09DF90BF28C62D3E00F93FEA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		09DF90C128C62D3E00F93FEA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -119,6 +127,22 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		0949AD6328FD44BA006A086F /* Utlis */ = {
+			isa = PBXGroup;
+			children = (
+				0949AD6428FD44CE006A086F /* RepositoryTask.swift */,
+			);
+			path = Utlis;
+			sourceTree = "<group>";
+		};
+		0949AD6628FD4518006A086F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0949AD6728FD452B006A086F /* Cancallable.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		09DF90B328C62D3E00F93FEA = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +167,7 @@
 				09DF90DB28C6328600F93FEA /* Domain */,
 				09DF90DA28C6327F00F93FEA /* Data */,
 				09DF90DC28C632A000F93FEA /* Infrastructure */,
+				0949AD6628FD4518006A086F /* Common */,
 				09DF90D828C6324700F93FEA /* Resources */,
 				09DF90CD28C62D3F00F93FEA /* Info.plist */,
 			);
@@ -181,6 +206,7 @@
 		09DF90DA28C6327F00F93FEA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				0949AD6328FD44BA006A086F /* Utlis */,
 				09331DD928C894EB000A52F7 /* Network */,
 				09DF90E728C6332400F93FEA /* Repositories */,
 			);
@@ -228,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				09331DD728C728D7000A52F7 /* NewsDataRepository.swift */,
+				09369AFC28DDE9150043C091 /* PosterImageRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -252,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				09331DD528C72767000A52F7 /* NewsRepositoryInterface.swift */,
+				09369AFE28DDEA7E0043C091 /* PosterImageRepositoryInterface.swift */,
 			);
 			path = Interfaces;
 			sourceTree = "<group>";
@@ -365,17 +393,21 @@
 				09DF90F228C6339600F93FEA /* NewsArticle.swift in Sources */,
 				09DF90F628C633AA00F93FEA /* NewsFeedViewController.swift in Sources */,
 				09331E3928DA0EBC000A52F7 /* NewsTableViewCell.swift in Sources */,
+				0949AD6528FD44CE006A086F /* RepositoryTask.swift in Sources */,
 				09331E3128D9BD77000A52F7 /* AppDIContainer.swift in Sources */,
 				09DF90C028C62D3E00F93FEA /* AppDelegate.swift in Sources */,
 				09DF90FF28C633F600F93FEA /* Observable.swift in Sources */,
+				09369AFD28DDE9150043C091 /* PosterImageRepository.swift in Sources */,
 				09331E3328D9BD8F000A52F7 /* NewsSceneDIContainer.swift in Sources */,
 				09331E2F28D9BD3A000A52F7 /* AppFlowCoordinator.swift in Sources */,
 				09DF90E328C632FB00F93FEA /* Endpoint.swift in Sources */,
 				09331DDB28C895C8000A52F7 /* APIEndpoints.swift in Sources */,
+				0949AD6828FD452B006A086F /* Cancallable.swift in Sources */,
 				09DF90FB28C633BA00F93FEA /* NewsFeedItemViewModel.swift in Sources */,
 				09331E3728D9C8AB000A52F7 /* NewsSceneFlowCoordinator.swift in Sources */,
 				09331DD628C72767000A52F7 /* NewsRepositoryInterface.swift in Sources */,
 				09DF90C228C62D3E00F93FEA /* SceneDelegate.swift in Sources */,
+				09369AFF28DDEA7E0043C091 /* PosterImageRepositoryInterface.swift in Sources */,
 				09331DD828C728D7000A52F7 /* NewsDataRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
