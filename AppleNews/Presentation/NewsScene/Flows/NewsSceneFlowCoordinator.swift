@@ -9,14 +9,14 @@ import Foundation
 import UIKit
 
 protocol NewsFeedFlowCoordinatorDependencies {
-    func makeNewsFeedViewController() -> NewsFeedViewController
+    func makeNewsFeedViewController(actions: Actions) -> NewsFeedViewController
+    func makeArtcildeDetailsViewController(with article: NewsArticle) -> NewsArticleDetailsViewController
 }
 
 final class NewsFeedFlowCoordinator {
     
     private let dependencies: NewsFeedFlowCoordinatorDependencies
     private weak var navigationController: UINavigationController?
-    private weak var newsFeedViewController: NewsFeedViewController?
     
     init(navigationController: UINavigationController,
          depenndencies: NewsFeedFlowCoordinatorDependencies) {
@@ -25,8 +25,13 @@ final class NewsFeedFlowCoordinator {
     }
     
     func start() {
-        let vc = dependencies.makeNewsFeedViewController()
+        let actions = Actions(showDetailsForArticle: showDetailsForArticle(article:))
+        let vc = dependencies.makeNewsFeedViewController(actions: actions)
         navigationController?.pushViewController(vc, animated: false)
-        newsFeedViewController = vc
+    }
+    
+    private func showDetailsForArticle(article: NewsArticle) {
+        let vc = dependencies.makeArtcildeDetailsViewController(with: article)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }

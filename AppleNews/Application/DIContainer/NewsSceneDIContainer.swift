@@ -5,10 +5,12 @@
 //  Created by Shotiko Klibadze on 20.09.22.
 //
 
-import Foundation
 import UIKit
 
 final class NewsSceneDIContainer: NewsFeedFlowCoordinatorDependencies {
+    
+    
+    
     
     struct Dependencies {
         let apiDataTransferService: DataTransferService
@@ -29,14 +31,22 @@ final class NewsSceneDIContainer: NewsFeedFlowCoordinatorDependencies {
     
     //MARK: - ViewControllers
     
-    func makeNewsFeedViewController() -> NewsFeedViewController {
-        return NewsFeedViewController(viewModel: makeNewsFeedViewModel(), imageDataTransferRepository: makePosterImageRepository())
+    func makeNewsFeedViewController(actions: Actions) -> NewsFeedViewController {
+        return NewsFeedViewController(viewModel: makeNewsFeedViewModel(actions: actions), imageDataTransferRepository: makePosterImageRepository())
     }
+    
+    func makeArtcildeDetailsViewController(with article: NewsArticle) -> NewsArticleDetailsViewController {
+        let vc = NewsArticleDetailsViewController(article: article)
+        return vc
+    }
+    
+    
+    
     
     //MARK: - ViewModels
     
-    func makeNewsFeedViewModel() -> NewsFeedViewModel {
-        return NewsFeedViewModel(newsFeedUseCaseInterface: makeNewsFeedUseCase())
+    func makeNewsFeedViewModel(actions: Actions) -> NewsFeedViewModel {
+        return NewsFeedViewModel(newsFeedUseCaseInterface: makeNewsFeedUseCase(), actions: actions)
     }
     
     // MARK: - UseCases
