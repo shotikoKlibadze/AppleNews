@@ -11,7 +11,6 @@ class NewsFeedViewController: UIViewController {
     
     private lazy var tableView = UITableView(frame: view.bounds)
     private var viewModel: NewsFeedViewModelProtocol?
-    
     private var newsItems = [NewsFeedItemViewModel]() {
         didSet {
             tableView.reloadData()
@@ -42,6 +41,7 @@ class NewsFeedViewController: UIViewController {
         title = "AppleNews"
         view.backgroundColor = .white
         view.addSubview(tableView)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     private func setupTableView() {
         tableView.dataSource = self
@@ -75,7 +75,7 @@ extension NewsFeedViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 400
+        return NewsTableViewCell.hegith
     }
     
 }

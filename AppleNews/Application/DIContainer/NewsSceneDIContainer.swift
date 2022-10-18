@@ -9,9 +9,6 @@ import UIKit
 
 final class NewsSceneDIContainer: NewsFeedFlowCoordinatorDependencies {
     
-    
-    
-    
     struct Dependencies {
         let apiDataTransferService: DataTransferService
         let imageDataTransferService: DataTransferService
@@ -39,9 +36,6 @@ final class NewsSceneDIContainer: NewsFeedFlowCoordinatorDependencies {
         let vc = NewsArticleDetailsViewController(article: article)
         return vc
     }
-    
-    
-    
     
     //MARK: - ViewModels
     

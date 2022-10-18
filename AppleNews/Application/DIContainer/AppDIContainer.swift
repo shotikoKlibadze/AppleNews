@@ -25,7 +25,7 @@ final class AppDIContainer {
         return dataTransferService
     }()
     
-    // MARK: - DIContainer of Scenes
+    // MARK: - DIContainer of Scenes -
     
     func makeNewsSceneDIContainer() -> NewsSceneDIContainer {
         let dependencies = NewsSceneDIContainer.Dependencies(apiDataTransferService: newsSceneDataTransfer,

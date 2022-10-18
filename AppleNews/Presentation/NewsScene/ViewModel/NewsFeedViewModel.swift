@@ -25,11 +25,10 @@ protocol NewsFeedViewModelOutput {
 protocol NewsFeedViewModelProtocol: NewsFeedViewModelInput, NewsFeedViewModelOutput {}
 
 final class NewsFeedViewModel : NewsFeedViewModelProtocol {
-    
-    
+
     var items: Observable<[NewsFeedItemViewModel]> = Observable([])
-    private var articles = [NewsArticle]()
     
+    private var articles = [NewsArticle]()
     private let newsFeedUseCaseInterface: NewsFeedUseCaseInterface
     private var actions: Actions
     
@@ -41,7 +40,6 @@ final class NewsFeedViewModel : NewsFeedViewModelProtocol {
     func viewDidLoad() {
         newsFeedUseCaseInterface.fetchNews { [weak self] articles in
             self?.appendItems(newsArticles: articles)
-            //articles.append(articles)
             self?.articles = articles
         }
     }
