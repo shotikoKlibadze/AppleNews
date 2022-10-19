@@ -108,7 +108,6 @@
 			children = (
 				09DF90F528C633AA00F93FEA /* NewsFeedViewController.swift */,
 				09331E3828DA0EBC000A52F7 /* NewsTableViewCell.swift */,
-				0949AD7928FF02D8006A086F /* NewsArticleDetailsViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -144,6 +143,14 @@
 				0949AD6728FD452B006A086F /* Cancallable.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		0949AD7F290017FB006A086F /* NewsDetailsScene */ = {
+			isa = PBXGroup;
+			children = (
+				0949AD7928FF02D8006A086F /* NewsArticleDetailsViewController.swift */,
+			);
+			path = NewsDetailsScene;
 			sourceTree = "<group>";
 		};
 		09DF90B328C62D3E00F93FEA = {
@@ -201,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				09DF90EF28C6336100F93FEA /* NewsScene */,
+				0949AD7F290017FB006A086F /* NewsDetailsScene */,
 				09DF90FD28C633EC00F93FEA /* Utils */,
 			);
 			path = Presentation;
