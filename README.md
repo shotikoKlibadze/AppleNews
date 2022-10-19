@@ -1,5 +1,5 @@
 # AppleNews
-iOS Project implemented with Clean Layered Architecture and MVVM + Coordinator
+## iOS Project implemented with Clean Layered Architecture and MVVM + Coordinator
 
 ![1_TlkwVbTUT9ugVZFMnC70BA](https://user-images.githubusercontent.com/85555736/196681857-52b9e462-8c68-43f3-8cb9-e7e01be085e0.png)
 
